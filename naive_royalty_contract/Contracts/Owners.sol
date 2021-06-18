@@ -31,6 +31,13 @@ contract Owners is Context {
         contractOwners[msgSender()] = false;
         emit ownerRemoved(msgSender());
     }
-    
 
+    function isOwner(address addr) public view returns(bool) {
+        return contractOwners[addr] == true;
+    }
+    
+    function checkSelfIsOwner() public view returns(bool) {
+        return isOwner(msgSender());
+    }
+    
 }
